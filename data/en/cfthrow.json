@@ -26,6 +26,14 @@
 			"description":"Throw and Finally requires CF9+ in cfscript",
 			"code":"try {\n    throw(message=\"Oops\", detail=\"xyz\"); //CF9+\n} catch (any e) {\n    writeOutput(\"Error: \" & e.message);\n} finally { //CF9+\n    writeOutput(\"I run even if no error\");\n}",
 			"result":"Error: OopsI run even if no error"
+		},
+		{
+			
+			"title": "Tag Example: Try, Throw. Catch. Finally",
+			"description": "Throw and return in the cfcatch requires CF +10 ",
+			"code": "<cftry>\n<cfif 1 NEQ 2>\n<cfthrow message=\"1 is not equal to 2\">\n</cfif>\n<cfcatch>\n<cfoutput>\n#serializeJSON({\n  message: cfcatch.message\n})#\n<cfabort>\n</cfoutput>\n</cfcatch>\n</cftry>",
+			"result": "{\"message\": \"1 is not equal 2\"}",
+			"runnable": true
 		}
 	]
 }
